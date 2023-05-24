@@ -35,7 +35,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<HomePage selectMovie={selectMovie}/>} />
                 <Route path={'/sessoes/' + clickedID} element={<SessionsPage onClick={selectSession} clickedID={clickedID}/>} />
-                <Route path={'/assentos/'+ sessionID} element={<SeatsPage />} />
+                <Route path={'/assentos/'+ sessionID} element={<SeatsPage sessionID={sessionID}/>} />
                 <Route path='/sucesso' element={<SuccessPage />} />
             </Routes>
         </BrowserRouter>

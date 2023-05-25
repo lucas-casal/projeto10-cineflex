@@ -15,7 +15,6 @@ export default function SessionsPage(props) {
         });
     }, []);
 
-console.log(filme)
     return (
         <PageContainer>
             Selecione o horário
@@ -30,7 +29,7 @@ console.log(filme)
                                 {x.showtimes.map((d) => {
                                     return (
                                         <Link to={'/assentos/'+d.id}>
-                                        <button key={d.id} onClick={() => {props.onClick(d)}}>{d.name}</button>
+                                        <button key={d.id} onClick={() => {props.onClick(d, x)}}>{d.name}</button>
                                         </Link>
                                     )
                                 

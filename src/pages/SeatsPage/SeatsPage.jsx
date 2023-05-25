@@ -2,37 +2,30 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Seat from "./Seat";
 axios.defaults.headers.common['Authorization'] = 'bv0Ks8i80MPdXuLLvCVzJc8f';
 
 export default function SeatsPage(props) {
-    let selected = false;
+    const [arrayLugares, setArrayLugares] = useState([])
     const [sessao, setSessao] = useState([])
     useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/showtimes/"+props.sessionID+"/seats");
         promise.then(res => {
             setSessao(res.data.seats)
-            console.log(sessao)
         });
     }, []);
 
-    function selectSeat(a){
-       let retorno;
-        if (a){
-            selected ? selected = false : selected = true;
-        }
-        console.log(retorno);
-        console.log("clicou")
-        return retorno;
-    }
+   
+
 
     return (
         <PageContainer>
             Selecione o(s) assento(s)
 
             <SeatsContainer>
-                {sessao.map((x) => {return (
-                    <SeatItem isAvailable={x.isAvailable} selected={selected} onClick={()=> selectSeat(x.isAvailable)} key={x.id}>{x.name}</SeatItem>
-                )})}
+                {sessao.map((x) => {
+                    return <Seat handleSeatName={props.handleSeatName} handleSeat={props.handleSeat} id={x.id} name={x.name} isAvailable={x.isAvailable} />     
+                    })}
             
             </SeatsContainer>
 
@@ -53,21 +46,23 @@ export default function SeatsPage(props) {
 
             <FormContainer>
                 Nome do Comprador:
-                <input placeholder="Digite seu nome..." />
+                <input placeholder="Digite seu nome..." onChange={(e) => props.handleUsername(e.target.value)} />
 
                 CPF do Comprador:
-                <input placeholder="Digite seu CPF..." />
-
-                <button>Reservar Assento(s)</button>
+                <input placeholder="Digite seu CPF..." onChange={(e) => props.handleCPF(e.target.value)} />
+                
+                <Link to={'/sucesso'}>
+                <button onClick={()=> props.obj(props.seats, props.username, props.CPF)}>Reservar Assento(s)</button>
+                </Link>
             </FormContainer>
 
             <FooterContainer>
                 <div>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster" />
+                    <img src={props.filmeImage} alt="poster" />
                 </div>
                 <div>
-                    <p>Tudo em todo lugar ao mesmo tempo</p>
-                    <p>Sexta - 14h00</p>
+                    <p>{props.filmeTitle}</p>
+                    <p>{props.sessao}</p>
                 </div>
             </FooterContainer>
 
@@ -134,19 +129,8 @@ const CaptionItem = styled.div`
     align-items: center;
     font-size: 12px;
 `
-const SeatItem = styled.div`
-    border: 1px solid ${(x) => x.isAvailable === false ? '#F7C52B' : (x.selected ? '#0E7D71' : '#7B8B99')};        // Essa cor deve mudar
-    background-color: ${(x) => x.isAvailable === false ? '#FBE192' : (x.selected ? '#1AAE9E' : 'lightblue')};
-    height: 25px;
-    width: 25px;
-    border-radius: 25px;
-    font-family: 'Roboto';
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5px 3px;
-`
+    
+    
 const FooterContainer = styled.div`
     width: 100%;
     height: 120px;

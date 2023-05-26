@@ -17,7 +17,7 @@ export default function App() {
     const [seats, setSeats] = useState([]);
     const [obj, setOBJ] = useState({ids: seats, name: username, cpf: CPF});
     const [seatName, setSeatName] = useState([])
-
+    const [sessaoSemana, setSessaoSemana] = useState('')
 
 
     function defineLugar(x){
@@ -54,7 +54,7 @@ export default function App() {
     function selectSession(session=0, options=0){
         console.log("clicou em " + session.name + " ID: " + session.id);
         setSessaoDate(options.date);
-        
+        setSessaoSemana(options.weekday)
         setSessionID(session.id? session.id : 0);
         setSessao(session);
     }
@@ -129,7 +129,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<HomePage selectMovie={selectMovie}/>} />
                 <Route path={'/sessoes/' + clickedID} element={<SessionsPage onClick={selectSession} clickedID={clickedID}/>} />
-                <Route path={'/assentos/'+ sessionID} element={<SeatsPage seats={seats} username={username} CPF={CPF} obj={handleObj} handleSeatName={handleSeatName} handleSeat={defineLugar} handleUsername={defineUsuario} handleCPF={defineCPF} filmeTitle={filme.title} filmeImage={filme.posterURL} sessaoWeekday={sessao.weekday} sessao={sessao.name} sessionID={sessionID}/>} />
+                <Route path={'/assentos/'+ sessionID} element={<SeatsPage seats={seats} username={username} CPF={CPF} obj={handleObj} handleSeatName={handleSeatName} handleSeat={defineLugar} handleUsername={defineUsuario} handleCPF={defineCPF} filmeTitle={filme.title} filmeImage={filme.posterURL} sessaoWeekday={sessaoSemana} sessao={sessao.name} sessionID={sessionID}/>} />
                 <Route path='/sucesso' element={<SuccessPage onClick={homepageBtn} obj={obj} username={username} cpf={arrayCPF} seatName={seatName} seats={seats} filme={filme.title} sessaoTime={sessao.name} sessaoDate={sessaoDate} />} />
             </Routes>
 

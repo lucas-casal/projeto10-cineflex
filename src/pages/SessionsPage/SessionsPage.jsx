@@ -19,28 +19,28 @@ export default function SessionsPage(props) {
         <PageContainer>
             Selecione o horário
             <div>
-                <SessionContainer data-test="movie-day">
-                    {dias.map((x) => {
-                      
-                        return(<>
-                            {x.weekday+" - "+x.date}
-                            <ButtonsContainer key = {x.id}>
-                       
-                                {x.showtimes.map((d) => {
-                                    return (
-                                        <Link data-test="showtime" to={'/assentos/'+d.id}>
-                                        <button key={d.id} onClick={() => {props.onClick(d, x)}}>{d.name}</button>
-                                        </Link>
-                                    )
-                                
-                                })}
-                                
-                            </ButtonsContainer>
+            {dias.map((x) => {
+                return(
+                <SessionContainer data-test="movie-day">    
+                    {x.weekday+" - "+x.date}
+                    <ButtonsContainer key = {x.id}>
+                
+                        {x.showtimes.map((d) => {
+                            return (
+                                <Link data-test="showtime" to={'/assentos/'+d.id}>
+                                <button key={d.id} onClick={() => {props.onClick(d, x)}}>{d.name}</button>
+                                </Link>
+                            )
                         
-                        </>)
                         })}
+                        
+                    </ButtonsContainer>
+                
+                    </SessionContainer>   )
+                    })
                     
-                </SessionContainer>
+                
+            }
             </div>
 
             <FooterContainer data-test="footer">

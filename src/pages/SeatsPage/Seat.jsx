@@ -12,6 +12,8 @@ export default function Seat(props){
             selected ? setSelected(false) : setSelected(true);
             props.handleSeat(a.id)
             props.handleSeatName(a.name)
+        } else{
+            alert('Assento indisponível!!')
         }
         console.log(a);
         console.log("clicou")

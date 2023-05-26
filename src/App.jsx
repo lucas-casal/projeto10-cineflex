@@ -129,7 +129,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<HomePage selectMovie={selectMovie}/>} />
                 <Route path={'/sessoes/' + clickedID} element={<SessionsPage onClick={selectSession} clickedID={clickedID}/>} />
-                <Route path={'/assentos/'+ sessionID} element={<SeatsPage seats={seats} username={username} CPF={CPF} obj={handleObj} handleSeatName={handleSeatName} handleSeat={defineLugar} handleUsername={defineUsuario} handleCPF={defineCPF} filmeTitle={filme.title} filmeImage={filme.posterURL} sessao={sessao.name} sessionID={sessionID}/>} />
+                <Route path={'/assentos/'+ sessionID} element={<SeatsPage seats={seats} username={username} CPF={CPF} obj={handleObj} handleSeatName={handleSeatName} handleSeat={defineLugar} handleUsername={defineUsuario} handleCPF={defineCPF} filmeTitle={filme.title} filmeImage={filme.posterURL} sessaoWeekday={sessao.weekday} sessao={sessao.name} sessionID={sessionID}/>} />
                 <Route path='/sucesso' element={<SuccessPage onClick={homepageBtn} obj={obj} username={username} cpf={arrayCPF} seatName={seatName} seats={seats} filme={filme.title} sessaoTime={sessao.name} sessaoDate={sessaoDate} />} />
             </Routes>
 

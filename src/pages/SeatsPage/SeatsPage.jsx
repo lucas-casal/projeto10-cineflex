@@ -61,7 +61,7 @@ export default function SeatsPage(props) {
                 </div>
                 <div>
                     <p>{props.filmeTitle}</p>
-                    <p>{props.sessao}</p>
+                    <p>{props.sessaoWeekday} - {props.sessao}</p>
                 </div>
             </FooterContainer>
 

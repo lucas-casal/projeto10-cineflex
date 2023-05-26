@@ -65,7 +65,7 @@ export default function App() {
 
     function handleObj(seats, username, CPF){
         if (seats.length === 0){
-            alert("Você não selecionou nenhum assento!!")
+            alert("Esse assento não está disponível")
             return false
         } else if (username === ''){
             alert("Você não digitou o seu nome!!")

@@ -19,24 +19,24 @@ export default function SuccessPage(props) {
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <TextContainer>
+            <TextContainer data-test="movie-info">
                 <strong><p>Filme e sessão</p></strong>
                 <p>{props.filme}</p>
                 <p>{props.sessaoDate} - {props.sessaoTime}</p>
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
                 {props.seatName.map((e) => <p key={e}> Assento {e} </p>)}
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="client-info">
                 <strong><p>Comprador</p></strong>
                 <p>Nome: {props.username}</p>
                 <p>CPF: {props.cpf}</p>
             </TextContainer>
 
-            <Link to='/'  onClick={props.onClick}><button>Voltar para Home</button></Link>
+            <Link to='/' data-test="go-home-btn" onClick={props.onClick}><button>Voltar para Home</button></Link>
         </PageContainer>
     )
 }

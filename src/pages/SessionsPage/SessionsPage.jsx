@@ -19,7 +19,7 @@ export default function SessionsPage(props) {
         <PageContainer>
             Selecione o horário
             <div>
-                <SessionContainer>
+                <SessionContainer data-test="movie-day">
                     {dias.map((x) => {
                       
                         return(<>
@@ -28,7 +28,7 @@ export default function SessionsPage(props) {
                        
                                 {x.showtimes.map((d) => {
                                     return (
-                                        <Link to={'/assentos/'+d.id}>
+                                        <Link data-test="showtime" to={'/assentos/'+d.id}>
                                         <button key={d.id} onClick={() => {props.onClick(d, x)}}>{d.name}</button>
                                         </Link>
                                     )
@@ -43,7 +43,7 @@ export default function SessionsPage(props) {
                 </SessionContainer>
             </div>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={filme.posterURL} alt="poster" />
                 </div>

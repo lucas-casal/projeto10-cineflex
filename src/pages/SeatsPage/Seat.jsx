@@ -20,7 +20,7 @@ export default function Seat(props){
 
 
 return (
-<SeatItem isAvailable={props.isAvailable} selected={selected} onClick={()=> selectSeat(props)} key={props.id}>{props.name}</SeatItem>)
+<SeatItem data-test="seat" isAvailable={props.isAvailable} selected={selected} onClick={()=> selectSeat(props)} key={props.id}>{props.name}</SeatItem>)
 
 
 }

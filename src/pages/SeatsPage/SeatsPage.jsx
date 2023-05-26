@@ -45,17 +45,17 @@ export default function SeatsPage(props) {
 
             <FormContainer>
                 Nome do Comprador:
-                <input placeholder="Digite seu nome..." onChange={(e) => props.handleUsername(e.target.value)} />
+                <input data-test="client-name" placeholder="Digite seu nome..." onChange={(e) => props.handleUsername(e.target.value)} />
 
                 CPF do Comprador:
-                <input placeholder="Digite seu CPF..." onChange={(e) => props.handleCPF(e.target.value)} onInput={(e) => e.target.value.length > 11 ? alert('o CPF digitado possui mais do que 11 caracteres') : ''}/>
+                <input data-test="client-cpf" placeholder="Digite seu CPF..." onChange={(e) => props.handleCPF(e.target.value)} onInput={(e) => e.target.value.length > 11 ? alert('o CPF digitado possui mais do que 11 caracteres') : ''}/>
                 
-                <Link to={props.seats.length !== 0 ? (props.username !== '' ? (props.CPF > 0 && props.CPF.length < 12 ? '/sucesso':''):''):''}>
-                <button onClick={()=> props.CPF > 0 && props.CPF.length < 12 ? props.obj(props.seats, props.username, props.CPF) : alert('O CPF está inválido!!!')}>Reservar Assento(s)</button>
+                <Link to={props.seats.length !== 0 ? (props.username !== '' ? (props.CPF > 0 && props.CPF.length < 12 ? '/sucesso':''):''):''} onClick={()=> props.CPF > 0 && props.CPF.length < 12 ? props.obj(props.seats, props.username, props.CPF) : alert('O CPF está inválido!!!')}>
+                <button data-test="book-seat-btn" >Reservar Assento(s)</button>
                 </Link>
             </FormContainer>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={props.filmeImage} alt="poster" />
                 </div>

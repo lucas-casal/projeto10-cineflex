@@ -122,7 +122,7 @@ export default function App() {
     return (
         <BrowserRouter >
            <NavContainer>
-           <Link to='/' onClick={homepageBtn}><IonContainer filme={filme}><ion-icon name="arrow-back-outline" border='3px solid black'></ion-icon></IonContainer></Link>
+           <Link data-test="go-home-header-btn" to='/' onClick={homepageBtn}><IonContainer filme={filme}><ion-icon name="arrow-back-outline" border='3px solid black'></ion-icon></IonContainer></Link>
             CINEFLEX
            </NavContainer>
 

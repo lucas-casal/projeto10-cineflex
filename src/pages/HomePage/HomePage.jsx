@@ -22,8 +22,8 @@ export default function HomePage(props) {
             <ListContainer>
                 {image.map((x)=> {
                     return(
-                    <MovieContainer  key={x.id} >
-                        <Link data-test="movie" to={'/sessoes/'+x.id} onClick={() => props.selectMovie(x)}>
+                    <MovieContainer data-test="movie"  key={x.id} >
+                        <Link to={'/sessoes/'+x.id} onClick={() => props.selectMovie(x)}>
                         <img src={x.posterURL} alt="poster"/>
                         </Link>
                     </MovieContainer>

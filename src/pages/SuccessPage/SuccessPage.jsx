@@ -1,9 +1,20 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
+import axios from "axios"
 
 export default function SuccessPage(props) {
-    console.log(props.seatName)
+    useEffect(()=> {
+        console.log(props.obj)
+        const promise = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", props.obj);
+        promise.then(res => {
+            console.log(res)
+        });
+        promise.catch(res => {console.log(res)});
 
+        promise.finally('done')
+    }, [])
+        
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
